@@ -1,5 +1,6 @@
 import users from './reducers/users';
 import user from './reducers/user';
+import activities from './reducers/activities';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
 import thunk from 'redux-thunk'; 
@@ -12,7 +13,8 @@ export const initStore = () => {
   // No Math.random() 
   const reducers = combineReducers({
     users,
-    user
+    user,
+    activities
   });
 
   // to user chrome redux extension

@@ -17,3 +17,12 @@ export const fetchUserById = userId => async dispatch => {
     user
   });
 }
+
+export const fetchActivitiesInRange = (userId, from, to) => async dispatch => {
+  dispatch({ type: 'IS_FETCHING_ACTIVITIES' });
+  const activities = api.fetchActivitiesInRange(userId, from, to);
+  return dispatch({
+    type: 'FETCH_USER_ACTIVITIES_BY_ID',
+    activities
+  });
+}
