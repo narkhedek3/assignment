@@ -8,6 +8,7 @@ import { fetchActivitiesInRange } from '../actions';
 
 import UserActivityTable from '../components/UserActivityTable';
 
+// to render activity table
 const renderActivities = activities => <UserActivityTable activities={activities} />
 
 class UserActivities extends React.Component {
@@ -25,6 +26,7 @@ class UserActivities extends React.Component {
 
   render = () => {
 
+    // activities {requiredRange, from, to}
     const { activities } = this.props;
 
     return (
