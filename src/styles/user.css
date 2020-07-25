@@ -1,0 +1,21 @@
+.user-card {
+  width: 100%;
+}
+.user-list {
+  height: 1vh;
+}
+
+.user-link {
+  color: inherit;
+  padding: 10px;
+}
+
+.user-link:hover {
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid black;
+}
+
+.user-title {
+  text-align: center;
+}

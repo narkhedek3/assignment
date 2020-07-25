@@ -1,0 +1,15 @@
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+@import './header.css';
+
+@import './user.css';
+
+body {
+  background-image: linear-gradient(white,whitesmoke);
+}
+
+.make-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
