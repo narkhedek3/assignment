@@ -5,7 +5,7 @@ class Header extends React.Component {
   render = () => {
     return (
       <div className="row sticky-top header">
-        <div className="col p-2 m-2 make-center">
+        <div className="col p-2 m-2">
           <h3>User Activities</h3>
         </div>
 
