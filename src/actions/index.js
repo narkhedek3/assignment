@@ -9,7 +9,7 @@ export const fetchUsers = () => dispatch => {
   });
 }
 
-export const fetchUserById = userId => async dispatch => {
+export const fetchUserById = userId => dispatch => {
   dispatch({ type: 'IS_FETCHING_USER' });
   const user = api.fetchUserById(userId);
   return dispatch({
@@ -18,7 +18,7 @@ export const fetchUserById = userId => async dispatch => {
   });
 }
 
-export const fetchActivitiesInRange = (userId, from, to) => async dispatch => {
+export const fetchActivitiesInRange = (userId, from, to) => dispatch => {
   dispatch({ type: 'IS_FETCHING_ACTIVITIES' });
   const activities = api.fetchActivitiesInRange(userId, from, to);
   return dispatch({
@@ -26,3 +26,13 @@ export const fetchActivitiesInRange = (userId, from, to) => async dispatch => {
     activities
   });
 }
+
+export const fetchAllActivitiesByUserId = (userId) => dispatch => {
+  dispatch({ type: 'IS_FETCHING_ACTIVITIES' });
+  const activities = api.fetchAllActivitiesByUserId(userId);
+  return dispatch({
+    type: 'FETCH_ALL_USER_ACTIVITIES_BY_ID',
+    activities
+  });
+}
+

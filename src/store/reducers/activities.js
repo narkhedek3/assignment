@@ -3,9 +3,10 @@ import { combineReducers } from 'redux';
 const initUserReducer = () => {
   
   const item = (state = {}, action) => {
-
     switch (action.type) {
       case 'FETCH_USER_ACTIVITIES_BY_ID':
+        return action.activities;
+      case 'FETCH_ALL_USER_ACTIVITIES_BY_ID':
         return action.activities;
       default:
         return state;

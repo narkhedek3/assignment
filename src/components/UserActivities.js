@@ -4,7 +4,7 @@ import DatePicker from 'react-date-picker';
 
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchActivitiesInRange } from '../actions';
+import { fetchActivitiesInRange, fetchAllActivitiesByUserId } from '../actions';
 
 import UserActivityTable from '../components/UserActivityTable';
 
@@ -20,11 +20,21 @@ class UserActivities extends React.Component {
 
   onDateChange = (from, to) => {
     const userId = this.props.match.params.id;
+    // after list all date field is empty 
+    // so to avoid alert assigning same date to both inputs
+    if(!from)
+      from = to;
+    if(!to)
+      to = from;
     if(from > to) 
       return alert('please check selected dates');
     this.props.dispatch(fetchActivitiesInRange(userId, from, to));
   }
 
+  listAllActivities = () => {
+    const userId = this.props.match.params.id;
+    this.props.dispatch(fetchAllActivitiesByUserId(userId));
+  }
 
   render = () => {
 
@@ -43,6 +53,9 @@ class UserActivities extends React.Component {
               <div className="col">
                 <label htmlFor="toDate">to &nbsp;&nbsp;</label>
                 <DatePicker id="to" value={activities.to} maxDate={new Date()} onChange={date => this.onDateChange(activities.from, date)} />
+              </div>
+              <div className="col">
+                <button className="btn btn-outline-dark" onClick={this.listAllActivities}>list all</button>
               </div>
             </div>
           </div>
