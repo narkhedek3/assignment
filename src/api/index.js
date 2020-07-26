@@ -15,9 +15,16 @@ const months = new Map([
   ['Dec', 11]
 ]);
 
+
+const getUserById = id => {
+  if(!id) return;
+  const user = data.members.find(member => member.id === id);
+  return user? user: null;
+} 
+
 export const fetchUsers = () => data.members;
 
-export const fetchUserById = id => data.members.find(member => member.id === id);
+export const fetchUserById = id => getUserById(id);
 
 const convertToDate = date => {
   const dateSplit = date.split(' ');
@@ -30,7 +37,7 @@ const convertToDate = date => {
 }
 
 export const fetchActivitiesInRange = (id, from, to) => {
-  const activities = data.members.find(member => member.id === id).activity_periods;
+  const activities = getUserById(id) ? getUserById(id).activity_periods: [];
 
   const requiredRange = activities.filter(activity => {
     const start_time = convertToDate(activity.start_time);
@@ -50,7 +57,7 @@ export const fetchActivitiesInRange = (id, from, to) => {
 }
 
 export const fetchAllActivitiesByUserId = id => ({
-  requiredRange: data.members.find(member => member.id === id).activity_periods,
+  requiredRange: getUserById(id) ? getUserById(id).activity_periods : [],
   from: "",
   to: ""
 });

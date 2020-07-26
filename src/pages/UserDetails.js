@@ -15,6 +15,9 @@ class UserDetails extends React.Component {
   render() {
     const { user, isFetching } = this.props;
 
+    if(user == null) 
+      return <h1>404 Not Found</h1>
+
     if (!isFetching) {
 
       return (
