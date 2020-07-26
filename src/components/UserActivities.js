@@ -43,12 +43,12 @@ class UserActivities extends React.Component {
 
     return (
       <div>
-        <div className="row border shadow">
-          <div className="col">
-            <div className="form-row m-3">
+        <div className="row">
+          <div className="col border shadow">
+            <div className="form-row m-2 p-2 shadow">
               <button className="btn btn-outline-dark" onClick={this.listAllActivities}>list all activities</button>
             </div>
-            <div className="form-row m-3">
+            <div className="form-row m-2 p-2 shadow">
               <div className="col">
                 <label htmlFor="fromDate">list activities from &nbsp;&nbsp;</label>
                 <DatePicker id="from" className="btn btn-outline-dark"  value={activities.from} maxDate={new Date()} onChange={date => this.onDateChange(date, activities.to)} />
@@ -62,7 +62,7 @@ class UserActivities extends React.Component {
 
           </div>
         </div>
-        <div className="row mt-2">
+        <div className="row mt-4 shadow">
           {
             activities.requiredRange && renderActivities(activities.requiredRange)
           }
