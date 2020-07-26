@@ -22,11 +22,11 @@ class UserActivities extends React.Component {
     const userId = this.props.match.params.id;
     // after list all date field is empty 
     // so to avoid alert assigning same date to both inputs
-    if(!from)
+    if (!from)
       from = to;
-    if(!to)
+    if (!to)
       to = from;
-    if(from > to) 
+    if (from > to)
       return alert('please check selected dates');
     this.props.dispatch(fetchActivitiesInRange(userId, from, to));
   }
@@ -43,21 +43,23 @@ class UserActivities extends React.Component {
 
     return (
       <div>
-        <div className="row">
+        <div className="row border shadow">
           <div className="col">
             <div className="form-row m-3">
-              <div className="col">
-                <label htmlFor="fromDate">from &nbsp;&nbsp;</label>
-                <DatePicker id="from" value={activities.from} maxDate={new Date()} onChange={date => this.onDateChange(date, activities.to)} />
-              </div>
-              <div className="col">
-                <label htmlFor="toDate">to &nbsp;&nbsp;</label>
-                <DatePicker id="to" value={activities.to} maxDate={new Date()} onChange={date => this.onDateChange(activities.from, date)} />
-              </div>
-              <div className="col">
-                <button className="btn btn-outline-dark" onClick={this.listAllActivities}>list all</button>
-              </div>
+              <button className="btn btn-outline-dark" onClick={this.listAllActivities}>list all activities</button>
             </div>
+            <div className="form-row m-3">
+              <div className="col">
+                <label htmlFor="fromDate">list activities from &nbsp;&nbsp;</label>
+                <DatePicker id="from" className="btn btn-outline-dark"  value={activities.from} maxDate={new Date()} onChange={date => this.onDateChange(date, activities.to)} />
+                &nbsp;&nbsp;
+
+                <label htmlFor="toDate">to &nbsp;&nbsp;</label>
+                <DatePicker id="to" className="btn btn-outline-dark" value={activities.to} maxDate={new Date()} onChange={date => this.onDateChange(activities.from, date)} />
+              </div>
+
+            </div>
+
           </div>
         </div>
         <div className="row mt-2">

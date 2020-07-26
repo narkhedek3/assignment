@@ -13,3 +13,13 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.make-left-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.width-100 {
+  width: 100vw;
+}

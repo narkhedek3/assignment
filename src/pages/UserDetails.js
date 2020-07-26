@@ -1,7 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUserById } from '../actions';
+
 
 import UserActivities from '../components/UserActivities';
 
@@ -21,10 +22,11 @@ class UserDetails extends React.Component {
     if (!isFetching) {
 
       return (
-        <section id="userDetails" >
-          <div className="upper-section">
+        <section id="userDetails " className="" >
+          <div className="upper-section p-2 border shadow" >
             <div className="row">
-              <div className="col">
+              <div className="col make-left-center">
+                <Link className="btn btn-outline-dark m-1" to={'/home'}>&#x2190;</Link>
                 <h1>{user.real_name}</h1>
               </div>
             </div>
@@ -32,7 +34,7 @@ class UserDetails extends React.Component {
 
           <div className="details-section">
             <div className="row">
-              <div className="col">
+              <div className="col m-2 p-2">
                 <UserActivities />               
               </div>
             </div>
