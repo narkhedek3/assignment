@@ -20,6 +20,8 @@ class UserActivities extends React.Component {
 
   onDateChange = (from, to) => {
     const userId = this.props.match.params.id;
+    if(from > to) 
+      return alert('please check selected dates');
     this.props.dispatch(fetchActivitiesInRange(userId, from, to));
   }
 
@@ -36,11 +38,11 @@ class UserActivities extends React.Component {
             <div className="form-row m-3">
               <div className="col">
                 <label htmlFor="fromDate">from &nbsp;&nbsp;</label>
-                <DatePicker id="from" value={activities.from} onChange={date => this.onDateChange(date, activities.to)} />
+                <DatePicker id="from" value={activities.from} maxDate={new Date()} onChange={date => this.onDateChange(date, activities.to)} />
               </div>
               <div className="col">
                 <label htmlFor="toDate">to &nbsp;&nbsp;</label>
-                <DatePicker id="to" value={activities.to} onChange={date => this.onDateChange(activities.from, date)} />
+                <DatePicker id="to" value={activities.to} maxDate={new Date()} onChange={date => this.onDateChange(activities.from, date)} />
               </div>
             </div>
           </div>
